@@ -15,6 +15,8 @@ public enum HDExtendedKeyVersion: UInt32, CaseIterable {
 
     public init(purpose: Purpose, coinType: ExtendedKeyCoinType, isPrivate: Bool = true) throws {
         switch purpose {
+        case .bip32:
+            self = isPrivate ? .xprv : .xpub
         case .bip44:
             switch coinType {
             case .bitcoin: self = isPrivate ? .xprv : .xpub
